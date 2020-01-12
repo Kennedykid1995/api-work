@@ -15,15 +15,16 @@ function App() {
         'http://www.omdbapi.com/?i=tt3896198&apikey=70e206aa'
       );
       setMovies(result.data);
+      console.log(movies); 
     };
     fetchData();
   }, [])
 
   return (
     <div className="App">
-      {movies.map(movie => (
+      {/* {movies.map(movie => (
         <li key={movie.i}>{movie.t}</li>
-      ))}
+      ))} */}
     </div>
   );
 }
