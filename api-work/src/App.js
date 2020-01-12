@@ -7,24 +7,25 @@ import './App.css';
 
 function App() {
 
-  const [movies, setMovies] = useState([])
+  const [pokemon, setPokemon] = useState({pokedex: []})
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        'http://www.omdbapi.com/?i=tt3896198&apikey=70e206aa'
+        'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20'
       );
-      setMovies(result.data);
-      console.log(movies); 
+      setPokemon(result.data);
+      console.log(result); 
     };
     fetchData();
   }, [])
 
   return (
     <div className="App">
-      {/* {movies.map(movie => (
-        <li key={movie.i}>{movie.t}</li>
-      ))} */}
+      {pokemon.pokedex.map(poke => (
+        <li>{poke.name}</li>
+      )
+      )}
     </div>
   );
 }
