@@ -12,15 +12,18 @@ const App = () => {
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20')
     .then(res => {
-      setPokemon(res.data);
+      setPokemon(res.data.results);
       console.log(res.data)
     });
   }, [])
+  console.log(pokemon.results)
   return (
     <div className="App">
-      {pokemon.map(poke => (
-        <h1>{poke.name}</h1>
-      ))}
+    {pokemon.map(poke => (
+      <div>
+      <h1 key={poke.id}>{poke.name}</h1>
+      </div>
+    ))}
     </div>
   );
 }
